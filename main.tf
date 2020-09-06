@@ -6,7 +6,7 @@ resource "aws_lb" "this" {
   load_balancer_type               = var.load_balancer_type
   name                             = var.name
   security_groups                  = var.security_groups
-  subnets                  = var.subnets
+  subnets                          = var.subnets
   tags                             = merge(var.tags, map("Name", var.name))
   timeouts {
     create = var.timeout_create
