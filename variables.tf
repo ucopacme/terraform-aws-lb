@@ -70,6 +70,18 @@ variable "tags" {
   type        = map(string)
 }
 
+variable "tags_lb" {
+  description = "A map of tags to add to load balancer"
+  type        = map(string)
+  default     = {}
+}
+
+variable "tags_target_group" {
+  description = "A map of tags to add to all target groups"
+  type        = map(string)
+  default     = {}
+}
+
 variable "target_groups" {
   default     = []
   description = "A list of maps containing key/value pairs that define the target groups to be created. Order of these maps is important and the index of these are to be referenced in listener definitions. Required key/values: name, backend_protocol, backend_port"

@@ -87,8 +87,15 @@ resource "aws_lb_target_group" "this" {
   proxy_protocol_v2                  = lookup(var.target_groups[count.index], "proxy_protocol_v2", false)
   slow_start                         = lookup(var.target_groups[count.index], "slow_start", null)
   target_type                        = lookup(var.target_groups[count.index], "target_type", null)
-  tags                               = merge(var.tags, map("Name", var.name))
-  vpc_id                             = var.vpc_id
+  tags = merge(
+    var.tags,
+    var.tags_target_group,
+    lookup(var.target_groups[count.index], "tags", {}),
+    {
+      "Name" = lookup(var.target_groups[count.index], "name", lookup(var.target_groups[count.index], "name_prefix", ""))
+    },
+  )
+  vpc_id = var.vpc_id
 
   dynamic "health_check" {
     for_each = length(keys(lookup(var.target_groups[count.index], "health_check", {}))) == 0 ? [] : [lookup(var.target_groups[count.index], "health_check", {})]
