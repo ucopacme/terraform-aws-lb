@@ -36,32 +36,32 @@ module "nlb" {
 
 
   // TCP_UDP, UDP, TCP
-  #  listeners_http_tcp = [
-  #    {
-  #      port               = 25
-  #      protocol           = "TCP"
-  #      target_group_index = 0
-  #    },
-  #    {
-  #      port               = 587
-  #      protocol           = "TCP"
-  #      target_group_index = 1
-  #    },
-  #  ]
-  #
-  #
-  #  target_groups = [
-  #    {
-  #      name_prefix      = "smtp-"
-  #      backend_protocol = "TCP"
-  #      backend_port     = 25
-  #      target_type      = "instance"
-  #    },
-  #    {
-  #      name_prefix      = "smtps-"
-  #      backend_protocol = "TCP"
-  #      backed_port      = 587
-  #      target_type      = "instance"
-  #    },
-  #  ]
+  listeners_http_tcp = [
+    {
+      port               = 25
+      protocol           = "TCP"
+      target_group_index = 0
+    },
+    {
+      port               = 587
+      protocol           = "TCP"
+      target_group_index = 1
+    },
+  ]
+
+
+  target_groups = [
+    {
+      backend_port     = 25
+      backend_protocol = "TCP"
+      name             = "ucopacme-network-nlb-tg-smtp"
+      target_type      = "instance"
+    },
+    {
+      backend_port     = 587
+      backend_protocol = "TCP"
+      name             = "ucopacme-network-nlb-tg-smtps"
+      target_type      = "instance"
+    },
+  ]
 }
