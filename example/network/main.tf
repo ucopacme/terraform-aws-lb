@@ -28,12 +28,10 @@ module "nlb" {
   vpc_id = data.aws_vpc.default.id
 
 
-
   //  # See notes in README (ref: https://github.com/terraform-providers/terraform-provider-aws/issues/7987)
   //  access_logs = {
   //    bucket = module.log_bucket.this_s3_bucket_id
   //  }
-
 
   // TCP_UDP, UDP, TCP
   listeners_http_tcp = [
@@ -48,7 +46,6 @@ module "nlb" {
       target_group_index = 1
     },
   ]
-
 
   target_groups = [
     {

@@ -1,9 +1,10 @@
 # Terraform module for AWS Application and Network Load Balancer (ALB & NLB) 
+# 
 
 These resources are supported:
 
 * [Load Balancer](https://www.terraform.io/docs/providers/aws/r/lb.html)
-* [Load Balancer Listener](https://www.terraform.io/docs/providers/aws/r/lb_listener.html)
+* [Load Balancer] Listener](https://www.terraform.io/docs/providers/aws/r/lb_listener.html)
 * [Target Group](https://www.terraform.io/docs/providers/aws/r/lb_target_group.html)
 
 Not supported (yet):
@@ -13,11 +14,6 @@ Not supported (yet):
 * [Load Balancer Listener Rule](https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html)
 * [Target Group Attachment](https://www.terraform.io/docs/providers/aws/r/lb_target_group_attachment.html)
 
-## Terraform versions
-
-Terraform 0.12 and newer. Pin module version to `~> v5.0`. Submit pull-requests to `master` branch.
-
-Terraform 0.11. Pin module version to `~> v3.0`. Submit pull-requests to `terraform011` branch.
 
 ## Usage
 
